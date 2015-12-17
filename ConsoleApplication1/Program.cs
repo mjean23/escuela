@@ -17,6 +17,13 @@ namespace ConsoleApplication1 {
 			pName = Console.ReadLine();
 			Console.WriteLine("Welcome {0}.", pName);
 			Console.Read();
+			bool start = true;
+			
+			//game loop
+			while (start == true) {
+
+			}
+
 
 		}
 	}
