@@ -82,12 +82,13 @@ namespace ConsoleApplication1 {
 			if (i <= 65) {
 				d = standardDMG();
 				Console.WriteLine("The enemy attacks.");
+				dmgDealt = d;
 			} else if (i > 65) {
 				d = specialDMG();
 				Console.WriteLine("The enemy Jumps high and crashes down on"
 					+ " you.");
+				dmgDealt = d;
 			}
-			d = dmgDealt;
 			return dmgDealt;
 		}
 	}
@@ -131,37 +132,50 @@ namespace ConsoleApplication1 {
 		public int behavior(Player p) {
 			var r = new Random();
 			int i = r.Next(1, 101), d;
-			if (i <= 85) {
+			if (i <= 10) {
+				//checks player's current hp.
+				int j = p.HP;
+				d = specialDMG(j);
+				if (d < 0) { d = 0; }
+				Console.WriteLine("\"Rocket Punch!\" \nOh,shit.");
+				Console.WriteLine("current HP:" + p.HP);
+				dmgDealt = d;
+
+			} else if (i > 10) {
 				// his standard attacks have some random attatched to them
 				// depending on the roll a different effect will happen
 				var r2 = new Random();
-				int j = r2.Next(1, 8);
+				int j = r2.Next(1, 7);
 				switch (j){
 					case 1:
-					case 7:
 						//normal damage
 						d = standardDMG();
 						Console.WriteLine("The enemy attacks With Naga.");
+						dmgDealt = d;
 						break;
 					case 2:
 						//75% normal damage
 						d = (int)(standardDMG()*0.75);
 						Console.WriteLine("The enemy attacks With Genji.");
+						dmgDealt = d;
 						break;
 					case 3:
 						//175% normal damage
 						d = (int)(standardDMG() * 1.75);
 						Console.WriteLine("The enemy attacks With Battle Axe.");
+						dmgDealt = d;
 						break;
 					case 4:
 						//x2 damage
 						d = standardDMG()*2;
 						Console.WriteLine("The enemy attacks With Bur.");
+						dmgDealt = d;
 						break;
 					case 5:
 						//damage=1
 						d = 1;
 						Console.WriteLine("The enemy attacks With Pur.");
+						dmgDealt = d;
 						break;
 					case 6:
 						//%chance will cast instant death, 
@@ -175,20 +189,14 @@ namespace ConsoleApplication1 {
 							Console.WriteLine("Instant Death activates.");
 							Console.WriteLine("DAMN YOU, RNG!");
 							d = 9999;
+							dmgDealt = d;
 						} else {
 							d = standardDMG();
+							dmgDealt = d;
 						}
 						break;
 				}
-			} else if (i > 15) {
-				//checks player's current hp.
-				int j = p.HP;
-				Console.WriteLine(j);
-				d = specialDMG(j);
-				if (d < 0) { d = 0; }
-				Console.WriteLine("\"Rocket Punch!\" \nOh,shit.");
 			}
-			d = dmgDealt;
 			return dmgDealt;
 		}
 	}

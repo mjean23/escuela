@@ -1,6 +1,6 @@
 ﻿//Text RPG Project
 //Author: Melissa Mojica (n01110962)
-//version: 1.0
+//version: 1.1
 //The balance is not good at all
 
 using System;
@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1 {
 	class Program
 	{
-		static void Main(string[] args)
+		//public static void Main(string[] args)
+		public static void Main()
 		{
 			string pName;
 			int i;
@@ -24,8 +25,7 @@ namespace ConsoleApplication1 {
 			p.Name = pName;
 			Console.WriteLine("Welcome {0}.", pName);
 
-			while (!reset)
-			{
+			
 				Console.WriteLine("----------------------------------");
 				do
 				{
@@ -52,24 +52,24 @@ namespace ConsoleApplication1 {
 							+ "difficulty lvl here. \nThe default level is 1. "
 							+ "\nThe max level is 50. "
 							+ "\nEnter a number from 1-50");
-
+						reset = false;
 						do
 						{
 							string input = Console.ReadLine();
 							int lvl;
-							valid = int.TryParse(input, out lvl);
+							reset = int.TryParse(input, out lvl);
 							int j = lvl;
-							if (j >= 1 || j <= 50)
+							if (j >= 1 && j <= 50)
 							{
 								p.LVL = j;
-								valid = true;
+								reset = true;
 							}
 							else {
-								Console.WriteLine("Enter a number between 1 and 50."
-									+ "\n It's not hard...");
-								valid = false;
+								Console.WriteLine("Enter a number between 1 and"
+									+ " 50.\n It's not hard...");
+								reset = false;
 							}
-						} while (!valid);
+						} while (!reset);
 					}
 					else { p.LVL = 1; }
 
@@ -89,8 +89,8 @@ namespace ConsoleApplication1 {
 							valid = true;
 						}
 						else {
-							Console.WriteLine("Invalid choice. \n Enter 1, 2, or 3"
-								+ "\n It's not hard...");
+							Console.WriteLine("Invalid choice. \n Enter 1, 2,"
+								+ " or 3\n It's not hard...");
 							valid = false;
 						}
 					} while (!valid);
@@ -126,9 +126,10 @@ namespace ConsoleApplication1 {
 						Console.WriteLine("[    You fight until you die     ]");
 						Console.WriteLine("[        or you turn back        ]");
 						Console.WriteLine("----------------------------------");
-						Console.WriteLine("The road ahead is haunted by the shadows"
-							+ " of adventurers past...");
-						Console.WriteLine("Do you truly whish to walk this path?");
+						Console.WriteLine("The road ahead is haunted by the "
+							+ "shadows of adventurers past...");
+						Console.WriteLine("Do you truly whish to walk this "
+							+ "path?");
 						Console.Read();
 
 						Console.WriteLine("----------------------------------");
@@ -211,7 +212,17 @@ namespace ConsoleApplication1 {
 
 								} while (e1.Alive);
 								Console.WriteLine("Winner!\nNo time to rest. "
-									+ "\nOn to the next one.");
+									+ "\nOn to the next one."); Console.WriteLine("----------------------------"
+									 + "------");
+								string n = p.Name;
+								string w = p.Weapon;
+								int s = p.Score;
+								int hp = p.HP;
+								int max = p.BaseHp;
+								int l = p.LVL;
+								Console.WriteLine("Player: " + n + "\nLevel: "
+									+ l + "\nEquipment: " + w + "\nScore: " + s
+									+ "\nCurrent HP: " + hp + "/" + max);
 								Console.Read();
 
 								break;
@@ -306,7 +317,18 @@ namespace ConsoleApplication1 {
 								} while (e2.Alive);
 								Console.WriteLine("Winner!\nNo time to rest. "
 									+ "\nOn to the next one.");
-
+								Console.WriteLine("----------------------------"
+									+ "------");
+								string n = p.Name;
+								string w = p.Weapon;
+								int s = p.Score;
+								int hp = p.HP;
+								int max = p.BaseHp;
+								int l = p.LVL;
+								Console.WriteLine("Player: " + n + "\nLevel: " 
+									+ l + "\nEquipment: " + w + "\nScore: " + s 
+									+ "\nCurrent HP: " + hp + "/" + max);
+								Console.Read();
 								break;
 							case 2:
 								gameOver(p);
@@ -320,9 +342,9 @@ namespace ConsoleApplication1 {
 					}
 				} else if (i == 2) {
 					//exits game
-					return;
+					Environment.Exit(0);
 				}
-			}
+			
 		}
 		
 		static void lose() {
@@ -352,6 +374,7 @@ namespace ConsoleApplication1 {
 
 			switch (i) {
 				case 1:
+					Main();
 					break;
 				case 2:
 					Environment.Exit(0);
@@ -360,47 +383,95 @@ namespace ConsoleApplication1 {
 		}
 
 
-		static void menu(Player p) {
-				//main menu
-				bool valid = false;
-				int i;
+		static void menu(Player p)
+		{
+			//main menu
+			bool valid = false;
+			int i;
 
-				Console.WriteLine("----------------------------------");
-				string n = p.Name;
-				string w = p.Weapon;
-				int s = p.Score;
-				int hp = p.HP;
-				int max = p.BaseHp;
-				int l = p.LVL;
-				Console.WriteLine("Player: " +n+ "\nLevel: " +l+ "\nEquipment: "
-					+ w + "\nScore: " + s + "\nCurrent HP: " + hp + "/" + max);
-				Console.WriteLine("----------------------------------");
-				Console.WriteLine("Main Menu: \n  1. Return to game "
-					+ "\n  2. New Game\n  3. Exit game");
-				do {
-					string input = Console.ReadLine();
-					valid = int.TryParse(input, out i);
-					int j = i;
-					if (j == 1 || j == 2 || j == 3) {
-						valid = true;
-					} else {
-						Console.WriteLine("Invalid choice. \n Enter 1, 2, or 3"
-							+ "\n It's not hard...");
-						valid = false;
-					}
-				} while (!valid);
-				switch (i) {
-					case 1:
-						return;
-					case 2:
-						p.HP = p.BaseHp;
-						break;
-					case 3:
-						Environment.Exit(0);
-						break;
+			Console.WriteLine("----------------------------------");
+			string n = p.Name;
+			string w = p.Weapon;
+			int s = p.Score;
+			int hp = p.HP;
+			int max = p.BaseHp;
+			int l = p.LVL;
+			Console.WriteLine("Player: " + n + "\nLevel: " + l + "\nEquipment: "
+				+ w + "\nScore: " + s + "\nCurrent HP: " + hp + "/" + max);
+			Console.WriteLine("----------------------------------");
+			Console.WriteLine("Main Menu: \n  1. Return to game "
+				+ "\n  2. New Game\n  3. Exit game");
+			do
+			{
+				string input = Console.ReadLine();
+				valid = int.TryParse(input, out i);
+				int j = i;
+				if (j == 1 || j == 2 || j == 3)
+				{
+					valid = true;
 				}
+				else {
+					Console.WriteLine("Invalid choice. \n Enter 1, 2, or 3"
+						+ "\n It's not hard...");
+					valid = false;
+				}
+			} while (!valid);
+			switch (i)
+			{
+				case 1:
+					return;
+				case 2:
+					Main();
+					break;
+				case 3:
+					Environment.Exit(0);
+					break;
 			}
-		
+		}
+
+
+		static void menuA(Player p)
+		{
+			//main menu
+			bool valid = false;
+			int i;
+
+			Console.WriteLine("----------------------------------");
+			string n = p.Name;
+			string w = p.Weapon;
+			int s = p.Score;
+			int hp = p.HP;
+			int max = p.BaseHp;
+			int l = p.LVL;
+			Console.WriteLine("Player: " + n + "\nLevel: " + l + "\nEquipment: "
+				+ w + "\nScore: " + s + "\nCurrent HP: " + hp + "/" + max);
+			Console.WriteLine("----------------------------------");
+			Console.WriteLine("Main Menu: \n  1. New Game\n  2. Exit game");
+			do
+			{
+				string input = Console.ReadLine();
+				valid = int.TryParse(input, out i);
+				int j = i;
+				if (j == 1 || j == 2)
+				{
+					valid = true;
+				}
+				else {
+					Console.WriteLine("Invalid choice. \n Enter 1, 2, or 3"
+						+ "\n It's not hard...");
+					valid = false;
+				}
+			} while (!valid);
+			switch (i)
+			{
+				case 1:
+					Main();
+					break;
+				case 2:
+					Environment.Exit(0);
+					break;
+			}
+		}
 
 		//defend command
 		static void defend(Player p, Dragon e) {
@@ -495,8 +566,8 @@ namespace ConsoleApplication1 {
 			int def = p.BaseDef;
 			int dmg;
 			dmg = e.behavior(p);
-			Console.WriteLine("You take " + dmg + " damage.");
 			p.HP -= dmg;
+			Console.WriteLine("You take " + dmg + " damage.");
 			if (p.HP <= 0 ) {
 				p.Alive = false;
 			}
