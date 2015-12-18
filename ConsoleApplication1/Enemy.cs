@@ -131,7 +131,7 @@ namespace ConsoleApplication1 {
 		}
 		public int behavior(Player p) {
 			var r = new Random();
-			int i = r.Next(1, 101), d;
+			int i = r.Next(1, 101), d; 
 			if (i <= 10) {
 				//checks player's current hp.
 				int j = p.HP;

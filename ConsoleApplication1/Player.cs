@@ -13,7 +13,7 @@ namespace ConsoleApplication1 {
 
 		public string Name {
 			get { return name; }
-			set { name = value; }
+			set { name = value; } 
 		}
 
 		public string Weapon {
