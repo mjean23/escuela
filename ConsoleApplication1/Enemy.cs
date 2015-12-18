@@ -117,8 +117,7 @@ namespace ConsoleApplication1 {
 		public void scaleATT(int playLVL) {
 			att = baseATT + playLVL / 10;
 		}
-		protected int standardDMG(Player p)
-		{
+		protected int standardDMG(Player p) {
 			dmgDealt = (att + (playLVL / 110));
 			return dmgDealt;
 		}
@@ -150,7 +149,7 @@ namespace ConsoleApplication1 {
 				int j = r2.Next(1, 7);
 				//Console.WriteLine(j); 
 				//int j = 6;
-				switch (j){
+				switch (j) {
 					case 1:
 						//normal damage
 						d = standardDMG();

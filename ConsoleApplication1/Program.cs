@@ -1,6 +1,6 @@
 ﻿//Text RPG Project
 //Author: Melissa Mojica (n01110962)
-//version: 1.11
+//version: 1.1.3
 //The balance is not good at all
 
 using System;
@@ -48,8 +48,8 @@ namespace ConsoleApplication1 {
 					if (i == 23)
 					{
 						Console.WriteLine("----------------------------------");
-						Console.WriteLine("Ooo, secret menu. \nYou can set your "
-							+ "difficulty lvl here. \nThe default level is 1. "
+						Console.WriteLine("Ooo, secret menu. \nYou can set your"
+							+ " difficulty lvl here. \nThe default level is 1. "
 							+ "\nThe max level is 50. "
 							+ "\nEnter a number from 1-50");
 						reset = false;
