@@ -568,7 +568,7 @@ namespace ConsoleApplication1 {
 			int dmg;
 			dmg = e.behavior(p)-def;
 			p.HP -= dmg;
-			Console.WriteLine("----------------------------------");
+			Console.WriteLine("----------------------------------"); 
 			Console.WriteLine("You take " + dmg + " damage." );
 			if (p.HP <= 0 ) {
 				p.Alive = false;

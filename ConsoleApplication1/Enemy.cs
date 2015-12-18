@@ -171,7 +171,7 @@ namespace ConsoleApplication1 {
 						break;
 					case 4:
 						//x2 damage
-						d = standardDMG()*2;
+						d = standardDMG()*2; 
 						Console.WriteLine("The enemy attacks With Bur.");
 						dmgDealt = d;
 						break;
