@@ -32,7 +32,7 @@ namespace ConsoleApplication1 {
 					valid = int.TryParse(input, out i);
 					int j = i;
 					if (j == 1 || j == 2 || j == 23) {
-						valid = true;
+						valid = true; 
 					} else {
 						valid = false;
 					}

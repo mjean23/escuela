@@ -53,6 +53,6 @@ namespace ConsoleApplication1 {
 			set { alive = value; }
 		}
 
-		public Player() { }
+		public Player() { } 
 	}
 }

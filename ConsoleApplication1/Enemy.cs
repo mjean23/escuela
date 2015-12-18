@@ -116,7 +116,7 @@ namespace ConsoleApplication1 {
 			currHP = hp;
 		}
 		public void scaleATT(int playLVL) {
-			att = baseATT + playLVL / 10;
+			att = baseATT + playLVL / 10; 
 		}
 		protected int standardDMG(Player p) {
 			dmgDealt = (att + (playLVL / 110));
