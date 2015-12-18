@@ -43,10 +43,10 @@ namespace ConsoleApplication1 {
 		}
 		protected int specialDMG() { return dmgDealt; }
 		public void scaleHP(int playLVL) {
-			hp = baseHP + playLVL / 10;
+			hp = baseHP + playLVL / 100;
 		}
 		public void scaleATT(int playLVL) {
-			att = baseATT + playLVL / 10;
+			att = baseATT + playLVL / 100;
 		}
 		public int behavior() { return dmgDealt; }
 	}
@@ -56,7 +56,7 @@ namespace ConsoleApplication1 {
 			special = "Jump";
 			wep = "Gungnir";
 			baseHP = 20;
-			baseATT = 3;
+			baseATT = 4;
 			intro = "The shadow of a knight approaches. " + Environment.NewLine
 				+ "Wielding a Lance and clad in armour adorned with dragons, "
 				+ Environment.NewLine + "he wishes to test your skill.";
@@ -119,7 +119,7 @@ namespace ConsoleApplication1 {
 		}
 		protected int standardDMG(Player p)
 		{
-			dmgDealt = (att + (playLVL / 110)- p.BaseDef);
+			dmgDealt = (att + (playLVL / 110));
 			return dmgDealt;
 		}
 		protected int specialDMG(int playHP) {

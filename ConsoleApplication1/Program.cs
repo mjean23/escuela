@@ -100,17 +100,17 @@ namespace ConsoleApplication1 {
 					{
 						case 1:
 							p.Weapon = "Sword & Shield";
-							p.BaseAtt = 2;
+							p.BaseAtt = 3;
 							p.BaseDef = 5;
 							break;
 						case 2:
 							p.Weapon = "Gun";
 							p.BaseAtt = 5;
-							p.BaseDef = 0;
+							p.BaseDef = 1;
 							break;
 						case 3:
 							p.Weapon = "Lance";
-							p.BaseAtt = 3;
+							p.BaseAtt = 4;
 							p.BaseDef = 3;
 							break;
 					}
@@ -476,12 +476,13 @@ namespace ConsoleApplication1 {
 
 		//defend command
 		static void defend(Player p, Dragon e) {
-			int def = p.BaseDef + ((p.BaseDef * p.LVL) / 110);
+			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
+			int def = ((p.BaseDef * p.LVL) / 110);
 			int dmg;
-			dmg = e.behavior() - def;
-			p.HP -= dmg;
+			dmg = e.behavior()/5 + def;
+			p.HP += dmg;
 			Console.WriteLine("----------------------------------");
-			Console.WriteLine("You take " + dmg + " damage.");
+			Console.WriteLine("You recover " + dmg + " HP.");
 			if (p.HP <= 0) {
 				p.Alive = false;
 			}
@@ -505,7 +506,8 @@ namespace ConsoleApplication1 {
 		}
 		//update hp for dmg taken 
 		static void damage(Player p, Dragon e) {
-			int def = p.BaseDef + ((p.BaseDef * p.LVL) / 110);
+			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 200);
+			int def = ((p.BaseDef * p.LVL) / 200);
 			int dmg;
 			dmg = e.behavior() - def;
 			Console.WriteLine("You take " + dmg + " damage.");
@@ -534,12 +536,13 @@ namespace ConsoleApplication1 {
 
 		//defend command
 		static void defend(Player p, Greg e) {
-			int def = p.BaseDef + ((p.BaseDef * p.LVL) / 70);
+			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
+			int def = ((p.BaseDef * p.LVL) / 110);
 			int dmg;
-			dmg = e.behavior(p) - def;
-			p.HP -= dmg;
+			dmg = e.behavior(p)/5 + def;
+			p.HP += dmg;
 			Console.WriteLine("----------------------------------");
-			Console.WriteLine("You take " + dmg + " damage.");
+			Console.WriteLine("You recover " + dmg + " HP.");
 			if (p.HP <= 0)
 			{
 				p.Alive = false;
@@ -564,11 +567,12 @@ namespace ConsoleApplication1 {
 		}
 		//update hp for dmg taken 
 		static void damage(Player p, Greg e) {
-			int def = p.BaseDef+((p.BaseDef*p.LVL)/170);
+			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 200);
+			int def = ((p.BaseDef * p.LVL) / 200);
 			int dmg;
 			dmg = e.behavior(p)-def;
 			p.HP -= dmg;
-			Console.WriteLine("You take " + dmg + " damage.");
+			Console.WriteLine("You take " + dmg + " damage." );
 			if (p.HP <= 0 ) {
 				p.Alive = false;
 			}
