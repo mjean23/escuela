@@ -559,7 +559,7 @@ namespace ConsoleApplication1 {
 				Console.WriteLine("----------------------------------");
 				Console.Read();
 				p.Score += 10;
-			}
+			} 
 		}
 		//update hp for dmg taken 
 		static void damage(Player p, Greg e) {

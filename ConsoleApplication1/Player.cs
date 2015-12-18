@@ -12,7 +12,7 @@ namespace ConsoleApplication1 {
 		private bool alive = true;
 
 		public string Name {
-			get { return name; }
+			get { return name; } 
 			set { name = value; } 
 		}
 

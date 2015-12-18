@@ -168,7 +168,7 @@ namespace ConsoleApplication1 {
 						d = (int)(standardDMG() * 1.75);
 						Console.WriteLine("The enemy attacks With Axe.");
 						dmgDealt = d;
-						break;
+						break; 
 					case 4:
 						//x2 damage
 						d = standardDMG()*2; 
