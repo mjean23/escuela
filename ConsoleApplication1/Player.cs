@@ -14,7 +14,7 @@ namespace ConsoleApplication1 {
 		public string Name {
 			get { return name; }
 			set { name = value; } 
-		} 
+		}
 
 		public string Weapon {
 			get { return weapon; }

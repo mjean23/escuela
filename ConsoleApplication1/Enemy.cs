@@ -118,7 +118,7 @@ namespace ConsoleApplication1 {
 			att = baseATT + playLVL / 10;
 		}
 		protected int standardDMG(Player p)
-		{ 
+		{
 			dmgDealt = (att + (playLVL / 110)- p.BaseDef);
 			return dmgDealt;
 		}
