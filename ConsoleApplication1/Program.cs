@@ -16,7 +16,7 @@ namespace ConsoleApplication1 {
 		public static void Main()
 		{
 			string pName;
-			int i;
+			int i; 
 			bool valid = false, start, reset = false;
 			Player p = new Player();
 
