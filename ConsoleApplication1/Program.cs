@@ -479,13 +479,10 @@ namespace ConsoleApplication1 {
 			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
 			int def = ((p.BaseDef * p.LVL) / 110);
 			int dmg;
-			dmg = e.behavior()/5 + def;
+			dmg = e.behavior()/2 + def;
 			p.HP += dmg;
 			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You recover " + dmg + " HP.");
-			if (p.HP <= 0) {
-				p.Alive = false;
-			}
 		}
 		//attack command
 		static void attack(Player p, Dragon e) {
@@ -494,7 +491,6 @@ namespace ConsoleApplication1 {
 			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You attack. " + Environment.NewLine
 				+ "You deal " + dmgDealt + " damage.");
-			Console.WriteLine("----------------------------------");
 			e.CurrHP -= dmgDealt;
 			if (e.CurrHP <= 0) {
 				e.Alive = false;
@@ -510,8 +506,9 @@ namespace ConsoleApplication1 {
 			int def = ((p.BaseDef * p.LVL) / 200);
 			int dmg;
 			dmg = e.behavior() - def;
-			Console.WriteLine("You take " + dmg + " damage.");
 			p.HP -= dmg;
+			Console.WriteLine("----------------------------------");
+			Console.WriteLine("You take " + dmg + " damage.");
 			if (p.HP <= 0) {
 				p.Alive = false;
 			}
@@ -539,13 +536,13 @@ namespace ConsoleApplication1 {
 			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
 			int def = ((p.BaseDef * p.LVL) / 110);
 			int dmg;
-			dmg = e.behavior(p)/5 + def;
-			p.HP += dmg;
-			Console.WriteLine("----------------------------------");
-			Console.WriteLine("You recover " + dmg + " HP.");
-			if (p.HP <= 0)
-			{
+			dmg = e.behavior(p) / 2 + def;
+			if (dmg >= 1000) {
 				p.Alive = false;
+			} else {
+				p.HP += dmg;
+				Console.WriteLine("----------------------------------");
+				Console.WriteLine("You recover " + dmg + " HP.");
 			}
 		}
 		//attack command
@@ -555,7 +552,6 @@ namespace ConsoleApplication1 {
 			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You attack. " + Environment.NewLine
 				+ "You deal " + dmgDealt + " damage.");
-			Console.WriteLine("----------------------------------");
 			e.CurrHP -= dmgDealt;
 			if (e.CurrHP <= 0) {
 				e.Alive = false;
@@ -572,6 +568,7 @@ namespace ConsoleApplication1 {
 			int dmg;
 			dmg = e.behavior(p)-def;
 			p.HP -= dmg;
+			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You take " + dmg + " damage." );
 			if (p.HP <= 0 ) {
 				p.Alive = false;

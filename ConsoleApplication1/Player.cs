@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1 {
 	public class Player { 
 		protected int lvl, baseHP = 80, baseATT, baseDEF, hp = 80, score = 10;
-		protected string name, weapon; 
+		protected string name, weapon;
 		private bool alive = true;
 
 		public string Name {

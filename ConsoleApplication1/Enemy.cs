@@ -61,8 +61,8 @@ namespace ConsoleApplication1 {
 				+ "Wielding a Lance and clad in armour adorned with dragons, "
 				+ Environment.NewLine + "he wishes to test your skill.";
 			outro = "\"Hmph.\" " + Environment.NewLine + "\"You've talent.\" "
-				+ Environment.NewLine + "\"Perhaps you'll be able to reach"
-				+ " the end.\"" + Environment.NewLine + Environment.NewLine
+				+ Environment.NewLine + "\"I wonder how far you'll make it.\"" 
+				+ Environment.NewLine + Environment.NewLine
 				+ "The shadow fades.";
 		}
 		public void scaleHP(int playLVL) {
@@ -138,7 +138,6 @@ namespace ConsoleApplication1 {
 				d = specialDMG(j);
 				if (d < 0) { d = 0; }
 				Console.WriteLine("\"Rocket Punch!\" \nOh,shit.");
-				Console.WriteLine("current HP:" + p.HP);
 				dmgDealt = d;
 
 			} else if (i > 10) {
@@ -161,13 +160,13 @@ namespace ConsoleApplication1 {
 					case 2:
 						//75% normal damage
 						d = (int)(standardDMG()*0.75);
-						Console.WriteLine("The enemy attacks With Genji.");
+						Console.WriteLine("The enemy attacks With Gen.");
 						dmgDealt = d;
 						break;
 					case 3:
 						//175% normal damage
 						d = (int)(standardDMG() * 1.75);
-						Console.WriteLine("The enemy attacks With Battle Axe.");
+						Console.WriteLine("The enemy attacks With Axe.");
 						dmgDealt = d;
 						break;
 					case 4:
@@ -178,7 +177,8 @@ namespace ConsoleApplication1 {
 						break;
 					case 5:
 						//damage=1
-						d = 1;
+						int def = ((p.BaseDef * p.LVL) / 200);
+						d = def+1;
 						Console.WriteLine("The enemy attacks With Pur.");
 						dmgDealt = d;
 						break;
@@ -193,7 +193,8 @@ namespace ConsoleApplication1 {
 						if (k >= l) {
 							Console.WriteLine("Instant Death activates.");
 							Console.WriteLine("DAMN YOU, RNG!");
-							d = 9999;
+							int x = ((p.BaseDef * p.LVL) / 200);
+							d = x+9999;
 							dmgDealt = d;
 						} else {
 							d = standardDMG();
