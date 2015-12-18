@@ -212,7 +212,8 @@ namespace ConsoleApplication1 {
 
 								} while (e1.Alive);
 								Console.WriteLine("Winner!\nNo time to rest. "
-									+ "\nOn to the next one."); Console.WriteLine("----------------------------"
+									+ "\nOn to the next one.");
+								Console.WriteLine("----------------------------"
 									 + "------");
 								string n = p.Name;
 								string w = p.Weapon;
