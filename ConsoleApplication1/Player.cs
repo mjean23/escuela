@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 //include hp, weapon, lvl, score
 namespace ConsoleApplication1 {
-	public class Player {
+	public class Player { 
 		protected int lvl, baseHP = 80, baseATT, baseDEF, hp = 80, score = 10;
 		protected string name, weapon;
 		private bool alive = true;

@@ -1,6 +1,6 @@
 ﻿//Text RPG Project
 //Author: Melissa Mojica (n01110962)
-//version: 1.1
+//version: 1.11
 //The balance is not good at all
 
 using System;
@@ -475,7 +475,7 @@ namespace ConsoleApplication1 {
 
 		//defend command
 		static void defend(Player p, Dragon e) {
-			int def = p.BaseDef;
+			int def = p.BaseDef + ((p.BaseDef * p.LVL) / 110);
 			int dmg;
 			dmg = e.behavior() - def;
 			p.HP -= dmg;
@@ -504,7 +504,7 @@ namespace ConsoleApplication1 {
 		}
 		//update hp for dmg taken 
 		static void damage(Player p, Dragon e) {
-			int def = p.BaseDef;
+			int def = p.BaseDef + ((p.BaseDef * p.LVL) / 110);
 			int dmg;
 			dmg = e.behavior() - def;
 			Console.WriteLine("You take " + dmg + " damage.");
@@ -533,7 +533,7 @@ namespace ConsoleApplication1 {
 
 		//defend command
 		static void defend(Player p, Greg e) {
-			int def = p.BaseDef;
+			int def = p.BaseDef + ((p.BaseDef * p.LVL) / 70);
 			int dmg;
 			dmg = e.behavior(p) - def;
 			p.HP -= dmg;
@@ -563,9 +563,9 @@ namespace ConsoleApplication1 {
 		}
 		//update hp for dmg taken 
 		static void damage(Player p, Greg e) {
-			int def = p.BaseDef;
+			int def = p.BaseDef+((p.BaseDef*p.LVL)/170);
 			int dmg;
-			dmg = e.behavior(p);
+			dmg = e.behavior(p)-def;
 			p.HP -= dmg;
 			Console.WriteLine("You take " + dmg + " damage.");
 			if (p.HP <= 0 ) {

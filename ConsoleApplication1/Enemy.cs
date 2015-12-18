@@ -144,8 +144,13 @@ namespace ConsoleApplication1 {
 			} else if (i > 10) {
 				// his standard attacks have some random attatched to them
 				// depending on the roll a different effect will happen
+				// I know I said 8 arms with a different one in each, but 
+				// I don't know how I would implement the other 2 in the scope 
+				// of this game
 				var r2 = new Random();
 				int j = r2.Next(1, 7);
+				//Console.WriteLine(j); 
+				//int j = 6;
 				switch (j){
 					case 1:
 						//normal damage
