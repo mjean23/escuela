@@ -50,6 +50,7 @@ namespace ConsoleApplication1 {
 		}
 		public int behavior() { return dmgDealt; }
 	}
+
 	public class Dragon : Enemy {
 		public Dragon() {
 			standard = "Attack";
@@ -102,7 +103,7 @@ namespace ConsoleApplication1 {
 			baseATT = 2;
 			intro = "You encounter a creature garbed in red. " 
 				+ Environment.NewLine + "Having eight arms, and brandishing"
-				+ "a different weapon in each," + Environment.NewLine 
+				+ " a different weapon in each," + Environment.NewLine 
 				+ "he challenges you to a duel.";
 			outro = "\"I, uhh, just realized... " + Environment.NewLine
 				+ "I...have a thing to go to." + Environment.NewLine
