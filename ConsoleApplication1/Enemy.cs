@@ -101,15 +101,14 @@ namespace ConsoleApplication1 {
 			wep = "Variable";
 			baseHP = 26;
 			baseATT = 2;
-			intro = "You encounter a creature garbed in red. " 
-				+ Environment.NewLine + "Having eight arms, and brandishing"
-				+ " a different weapon in each," + Environment.NewLine 
-				+ "he challenges you to a duel.";
+			intro = "You encounter a creature garbed in red. It doesn't seem to" 
+				+"be another shadow."+ Environment.NewLine + "Having eight "
+				+ "arms, and brandishing a different weapon in each,"  
+				+ Environment.NewLine + "he challenges you to a duel.";
 			outro = "\"I, uhh, just realized... " + Environment.NewLine
 				+ "I...have a thing to go to." + Environment.NewLine
 				+ "Gotta run!" + Environment.NewLine + Environment.NewLine
-				+ "Confused, you're left wondering wheather he was another "
-				+ "shadow or not";
+				+ "Confused, you're left wondering what just happened...";
 		}
 		public void scaleHP(int playLVL) {
 			hp = baseHP + playLVL / 10;
@@ -122,20 +121,22 @@ namespace ConsoleApplication1 {
 			dmgDealt = (att + (playLVL / 110));
 			return dmgDealt;
 		}
-		protected int specialDMG(int playHP) {
+		protected int specialDMG(Player p) {
 			//ok, the way this attack is Supposed to work is
 			//damage equal to half player's current hp
-			//it's mean, but it shouldn't beable to kill you
-			dmgDealt = ((playHP/2) - 1); 
+			//it's mean, but it shouldn't be able to kill you
+			dmgDealt = (int)((p.HP/2) + ((p.BaseDef * p.LVL) / 200)); 
 			return dmgDealt;
 		}
 		public int behavior(Player p) {
 			var r = new Random();
-			int i = r.Next(1, 101), d; 
+			int i = r.Next(1, 101);
+			int d;
+			//int i = 3;
 			if (i <= 10) {
 				//checks player's current hp.
-				int j = p.HP;
-				d = specialDMG(j);
+				//int j = p.HP;
+				d = specialDMG(p);
 				if (d < 0) { d = 0; }
 				Console.WriteLine("\"Rocket Punch!\" \nOh,shit.");
 				dmgDealt = d;

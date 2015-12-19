@@ -14,7 +14,7 @@ namespace ConsoleApplication1 {
 		//public static void Main(string[] args)
 		public static void Main() {
 			string pName; 
-			int i; 
+			int i, e=1; 
 			bool valid = false, start, reset = false;
 			Player p = new Player();
 
@@ -85,13 +85,13 @@ namespace ConsoleApplication1 {
 					switch (i) {
 						case 1:
 							p.Weapon = "Sword & Shield";
-							p.BaseAtt = 3;
+							p.BaseAtt = 2;
 							p.BaseDef = 5;
 							break;
 						case 2:
 							p.Weapon = "Gun";
-							p.BaseAtt = 5;
-							p.BaseDef = 1;
+							p.BaseAtt = 6;
+							p.BaseDef = 0;
 							break;
 						case 3:
 							p.Weapon = "Lance";
@@ -103,6 +103,7 @@ namespace ConsoleApplication1 {
 					start = true;
 
 					while (start == true) {
+						Console.Clear();
 						Console.WriteLine("----------------------------------");
 						Console.WriteLine("[Enter 9 at anytime to open menu.]");
 						Console.WriteLine("[ This is a gauntlet, you do not ]");
@@ -116,8 +117,10 @@ namespace ConsoleApplication1 {
 							+ "path?");
 						Console.Read();
 
+
+						Console.Clear();
 						Console.WriteLine("----------------------------------");
-						Console.WriteLine("[Encounter 1]");
+						Console.WriteLine("[Encounter " + e + "]");
 						Dragon e1 = new Dragon();
 						e1.scaleATT(p.LVL);
 						e1.scaleHP(p.LVL);
@@ -142,8 +145,7 @@ namespace ConsoleApplication1 {
 						switch (i) {
 							case 1:
 								do {
-									if (p.Alive == false)
-									{
+									if (p.Alive == false) {
 										lose();
 										gameOver(p);
 									}
@@ -198,13 +200,15 @@ namespace ConsoleApplication1 {
 								int hp = p.HP;
 								int max = p.BaseHp;
 								int l = p.LVL;
+								e++;
 								Console.WriteLine("Player: " + n + "\nLevel: "
 									+ l + "\nEquipment: " + w + "\nScore: " + s
 									+ "\nCurrent HP: " + hp + "/" + max);
 								Console.Read();
-
+								Console.Read();
 								break;
 							case 2:
+								Console.Clear();
 								gameOver(p);
 								break;
 
@@ -213,8 +217,10 @@ namespace ConsoleApplication1 {
 								break;
 						}
 					}
+
+						Console.Clear();
 						Console.WriteLine("----------------------------------");
-						Console.WriteLine("[Encounter 2]");
+						Console.WriteLine("[Encounter " + e + "]");
 						Greg e2 = new Greg();
 						e2.scaleATT(p.LVL);
 						e2.scaleHP(p.LVL);
@@ -296,12 +302,15 @@ namespace ConsoleApplication1 {
 								int hp = p.HP;
 								int max = p.BaseHp;
 								int l = p.LVL;
+								e++;
 								Console.WriteLine("Player: " + n + "\nLevel: "
 									+ l + "\nEquipment: " + w + "\nScore: " + s
 									+ "\nCurrent HP: " + hp + "/" + max);
 								Console.Read();
+								Console.Read();
 								break;
 							case 2:
+								Console.Clear();
 								gameOver(p);
 								break;
 
@@ -320,6 +329,7 @@ namespace ConsoleApplication1 {
 		
 		static void lose() {
 			//loss message
+			Console.Clear();
 			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You Died. Your dead. \nHa! Basura.");
 		}
@@ -345,6 +355,7 @@ namespace ConsoleApplication1 {
 
 			switch (i) {
 				case 1:
+					Console.Clear();
 					Main();
 					break;
 				case 2:
@@ -358,7 +369,7 @@ namespace ConsoleApplication1 {
 			//main menu
 			bool valid = false;
 			int i;
-
+			Console.Clear();
 			Console.WriteLine("----------------------------------");
 			string n = p.Name;
 			string w = p.Weapon;
@@ -385,8 +396,10 @@ namespace ConsoleApplication1 {
 			} while (!valid);
 			switch (i) {
 				case 1:
+					Console.Clear();
 					return;
 				case 2:
+					Console.Clear();
 					Main();
 					break;
 				case 3:
@@ -397,24 +410,25 @@ namespace ConsoleApplication1 {
 
 		//defend command
 		static void defend(Player p, Dragon e) {
+			Console.WriteLine("----------------------------------");
 			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
 			int def = ((p.BaseDef * p.LVL) / 110);
 			int dmg;
 			dmg = e.behavior()/2 + def;
 			p.HP += dmg;
-			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You recover " + dmg + " HP.");
 		}
 		//attack command
 		static void attack(Player p, Dragon e) {
-			int dmgDealt;
-			dmgDealt = (p.BaseAtt + (p.LVL / 50));
 			Console.WriteLine("----------------------------------");
+			int dmgDealt;
+			dmgDealt = (p.BaseAtt + (p.LVL / 20));
 			Console.WriteLine("You attack. " + Environment.NewLine
 				+ "You deal " + dmgDealt + " damage.");
 			e.CurrHP -= dmgDealt;
 			if (e.CurrHP <= 0) {
 				e.Alive = false;
+				Console.WriteLine("----------------------------------");
 				Console.WriteLine(e.Outro);
 				Console.WriteLine("----------------------------------");
 				Console.Read();
@@ -423,12 +437,12 @@ namespace ConsoleApplication1 {
 		}
 		//update hp for dmg taken 
 		static void damage(Player p, Dragon e) {
+			Console.WriteLine("----------------------------------");
 			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 200);
 			int def = ((p.BaseDef * p.LVL) / 200);
 			int dmg;
 			dmg = e.behavior() - def;
 			p.HP -= dmg;
-			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You take " + dmg + " damage.");
 			if (p.HP <= 0) {
 				p.Alive = false;
@@ -436,11 +450,11 @@ namespace ConsoleApplication1 {
 		}
 		//scan command
 		static void scan(Dragon e) {
+			Console.WriteLine("----------------------------------");
 			int currHP= e.CurrHP;
 			int totalHP = e.HP;
 			string wep = e.Weapon;
 			string special = e.Special;
-			Console.WriteLine("----------------------------------");
 			Console.WriteLine("Special attack: " + special);
 			Console.WriteLine("Weapon: " + wep);
 			Console.WriteLine("HP: " + currHP + "/" + totalHP);
@@ -454,6 +468,7 @@ namespace ConsoleApplication1 {
 
 		//defend command
 		static void defend(Player p, Greg e) {
+			Console.WriteLine("----------------------------------");
 			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
 			int def = ((p.BaseDef * p.LVL) / 110);
 			int dmg;
@@ -462,20 +477,20 @@ namespace ConsoleApplication1 {
 				p.Alive = false;
 			} else {
 				p.HP += dmg;
-				Console.WriteLine("----------------------------------");
 				Console.WriteLine("You recover " + dmg + " HP.");
 			}
 		}
 		//attack command
 		static void attack(Player p, Greg e) {
 			int dmgDealt;
-			dmgDealt = (p.BaseAtt + (p.LVL / 50));
+			dmgDealt = (p.BaseAtt + (p.LVL / 20));
 			Console.WriteLine("----------------------------------");
 			Console.WriteLine("You attack. " + Environment.NewLine
 				+ "You deal " + dmgDealt + " damage.");
 			e.CurrHP -= dmgDealt;
 			if (e.CurrHP <= 0) {
 				e.Alive = false;
+				Console.WriteLine("----------------------------------");
 				Console.WriteLine(e.Outro);
 				Console.WriteLine("----------------------------------");
 				Console.Read();
@@ -484,12 +499,12 @@ namespace ConsoleApplication1 {
 		}
 		//update hp for dmg taken 
 		static void damage(Player p, Greg e) {
+			Console.WriteLine("----------------------------------"); 
 			//int def = p.BaseDef + ((p.BaseDef * p.LVL) / 200);
 			int def = ((p.BaseDef * p.LVL) / 200);
 			int dmg;
 			dmg = e.behavior(p)-def;
 			p.HP -= dmg;
-			Console.WriteLine("----------------------------------"); 
 			Console.WriteLine("You take " + dmg + " damage." );
 			if (p.HP <= 0 ) {
 				p.Alive = false;
@@ -497,11 +512,11 @@ namespace ConsoleApplication1 {
 		}
 		//scan command
 		static void scan(Greg e) {
+			Console.WriteLine("----------------------------------");
 			int currHP = e.CurrHP;
 			int totalHP = e.HP;
 			string wep = e.Weapon;
 			string special = e.Special;
-			Console.WriteLine("----------------------------------");
 			Console.WriteLine("Special attack: " + special);
 			Console.WriteLine("Weapon: " + wep);
 			Console.WriteLine("HP: " + currHP + "/" + totalHP);
