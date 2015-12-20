@@ -1,6 +1,6 @@
 ﻿//Text RPG Project
 //Author: Melissa Mojica (n01110962)
-//version: 1.1.3
+//version: 1.1.4
 //The balance is not good at all
 
 using System;
@@ -330,7 +330,7 @@ namespace ConsoleApplication1 {
         static void lose() {
             //loss message
             Console.WriteLine("----------------------------------");
-            Console.WriteLine("You Died. \nYour dead. \nHa! Basura.");
+            Console.WriteLine("You Died. \nYou're dead. \nHa! Basura.");
         }
 
         static void gameOver(Player p) {
