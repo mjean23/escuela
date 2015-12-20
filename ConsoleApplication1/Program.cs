@@ -413,9 +413,9 @@ namespace ConsoleApplication1 {
             //int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
             int def = ((p.BaseDef * p.LVL) / 110);
             int dmg;
-            dmg = e.behavior()/3 + def;
+            dmg = e.behavior()/2 + def;
             p.HP += dmg;
-            if (p.HP > p.BaseHp) { p.HP = 80; }
+            if (p.HP > p.BaseHp) { p.HP = p.BaseHp; }
             Console.WriteLine("----------------------------------");
             Console.WriteLine("You recover " + dmg + " HP.");
         }
@@ -473,13 +473,13 @@ namespace ConsoleApplication1 {
             //int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
             int def = ((p.BaseDef * p.LVL) / 110);
             int dmg;
-            dmg = e.behavior(p) / 3 + def;
+            dmg = e.behavior(p) / 2 + def;
             if (dmg >= 1000) {
                 p.Alive = false;
             } else {
                 if (dmg<=0) { dmg=1; }
                 p.HP += dmg;
-                if (p.HP > p.BaseHp) { p.HP = 80; }
+                if (p.HP > p.BaseHp) { p.HP = p.BaseHp; }
                 Console.WriteLine("----------------------------------");
                 Console.WriteLine("You recover " + dmg + " HP.");
             }
