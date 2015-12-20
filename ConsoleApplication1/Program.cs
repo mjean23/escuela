@@ -52,7 +52,7 @@ namespace ConsoleApplication1 {
                             reset = int.TryParse(input, out lvl);
                             int j = lvl;
                             if (j >= 1 && j <= 50) {
-                                p.LVL = j;
+                                p.LVL = j+49;
                                 reset = true;
                             } else {
                                 Console.WriteLine("Enter a number between 1 and"
@@ -60,7 +60,7 @@ namespace ConsoleApplication1 {
                                 reset = false;
                             }
                         } while (!reset);
-                    } else { p.LVL = 1; }
+                    } else { p.LVL = 50; }
 
                     Console.WriteLine("----------------------------------");
                     Console.WriteLine("Select your weapon: \n1. Sword & Shield "
@@ -199,7 +199,7 @@ namespace ConsoleApplication1 {
                                 int s = p.Score;
                                 int hp = p.HP;
                                 int max = p.BaseHp;
-                                int l = p.LVL;
+                                int l = p.LVL-49;
                                 e++;
                                 Console.WriteLine("Player: " + n + "\nLevel: "
                                     + l + "\nEquipment: " + w + "\nScore: " + s
@@ -300,7 +300,7 @@ namespace ConsoleApplication1 {
                                 int s = p.Score;
                                 int hp = p.HP;
                                 int max = p.BaseHp;
-                                int l = p.LVL;
+                                int l = p.LVL-49;
                                 e++;
                                 Console.WriteLine("Player: " + n + "\nLevel: "
                                     + l + "\nEquipment: " + w + "\nScore: " + s
@@ -329,9 +329,8 @@ namespace ConsoleApplication1 {
         
         static void lose() {
             //loss message
-            Console.Clear();
             Console.WriteLine("----------------------------------");
-            Console.WriteLine("You Died. Your dead. \nHa! Basura.");
+            Console.WriteLine("You Died. \nYour dead. \nHa! Basura.");
         }
 
         static void gameOver(Player p) {
@@ -376,7 +375,7 @@ namespace ConsoleApplication1 {
             int s = p.Score;
             int hp = p.HP;
             int max = p.BaseHp;
-            int l = p.LVL;
+            int l = p.LVL-49;
             Console.WriteLine("Player: " + n + "\nLevel: " + l + "\nEquipment: "
                 + w + "\nScore: " + s + "\nCurrent HP: " + hp + "/" + max);
             Console.WriteLine("----------------------------------");
@@ -414,8 +413,10 @@ namespace ConsoleApplication1 {
             //int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
             int def = ((p.BaseDef * p.LVL) / 110);
             int dmg;
-            dmg = e.behavior()/2 + def;
+            dmg = e.behavior()/3 + def;
             p.HP += dmg;
+            if (p.HP > p.BaseHp) { p.HP = 80; }
+            Console.WriteLine("----------------------------------");
             Console.WriteLine("You recover " + dmg + " HP.");
         }
         //attack command
@@ -472,11 +473,14 @@ namespace ConsoleApplication1 {
             //int def = p.BaseDef + ((p.BaseDef * p.LVL) / 150);
             int def = ((p.BaseDef * p.LVL) / 110);
             int dmg;
-            dmg = e.behavior(p) / 2 + def;
+            dmg = e.behavior(p) / 3 + def;
             if (dmg >= 1000) {
                 p.Alive = false;
             } else {
+                if (dmg<=0) { dmg=1; }
                 p.HP += dmg;
+                if (p.HP > p.BaseHp) { p.HP = 80; }
+                Console.WriteLine("----------------------------------");
                 Console.WriteLine("You recover " + dmg + " HP.");
             }
         }

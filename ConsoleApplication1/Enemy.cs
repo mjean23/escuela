@@ -189,7 +189,7 @@ namespace ConsoleApplication1 {
                         //%based on lvl
                         Console.WriteLine("The enemy attacks With Zan.");
                         var r3 = new Random();
-                        int k = playLVL;
+                        int k = playLVL-49;
                         int l = r3.Next(1,101);
                         if (k >= l) {
                             Console.WriteLine("Instant Death activates.");
